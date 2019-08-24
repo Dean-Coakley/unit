@@ -718,7 +718,8 @@ nxt_python_get_environ(nxt_python_run_ctx_t *ctx)
 
     RC(nxt_python_add_sptr(ctx, "SERVER_NAME", &r->server_name,
                            r->server_name_length));
-    RC(nxt_python_add_str(ctx, "SERVER_PORT", "80", 2));
+    RC(nxt_python_add_sptr(ctx, "SERVER_PORT", &r->server_port,
+                           r->server_port_length));
 
     for (i = 0; i < r->fields_count; i++) {
         f = r->fields + i;

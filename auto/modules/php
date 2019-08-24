@@ -14,16 +14,18 @@ for nxt_option; do
     esac
 
     case "$nxt_option" in
-        --config=*)    NXT_PHP_CONFIG="$value"                               ;;
-        --module=*)    NXT_PHP_MODULE="$value"                               ;;
-        --lib-path=*)  NXT_PHP_LIB_PATH="$value"                             ;;
-        --lib-static)  NXT_PHP_LIB_STATIC=yes                                ;;
+        --config=*)       NXT_PHP_CONFIG="$value"                               ;;
+        --module=*)       NXT_PHP_MODULE="$value"                               ;;
+        --server-port=*)  NXT_PHP_SERVER_PORT="$value"                          ;;
+        --lib-path=*)     NXT_PHP_LIB_PATH="$value"                             ;;
+        --lib-static)     NXT_PHP_LIB_STATIC=yes                                ;;
 
         --help)
             cat << END
 
     --config=FILE         set php-config filename
     --module=NAME         set unit php module name
+    --server-port=PORT    set unit php server port
     --lib-path=DIRECTORY  set directory path to libphp.so library
     --lib-static          enable linking with static libphp.a library
 
@@ -56,6 +58,7 @@ fi
 NXT_PHP_CONFIG=${NXT_PHP_CONFIG=php-config}
 NXT_PHP=${NXT_PHP_CONFIG%-config*}
 NXT_PHP_MODULE=${NXT_PHP_MODULE=${NXT_PHP##*/}}
+NXT_PHP_SERVER_PORT=${NXT_PHP_SERVER_PORT=}
 NXT_PHP_LIB_PATH=${NXT_PHP_LIB_PATH=}
 NXT_PHP_LIB_STATIC=${NXT_PHP_LIB_STATIC=no}
 

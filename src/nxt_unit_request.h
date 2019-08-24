@@ -22,6 +22,7 @@ struct nxt_unit_request_s {
     uint8_t               tls;
     uint8_t               websocket_handshake;
     uint32_t              server_name_length;
+    uint32_t              server_port_length;
     uint32_t              target_length;
     uint32_t              path_length;
     uint32_t              query_length;
@@ -38,6 +39,7 @@ struct nxt_unit_request_s {
     nxt_unit_sptr_t       remote;
     nxt_unit_sptr_t       local;
     nxt_unit_sptr_t       server_name;
+    nxt_unit_sptr_t       server_port;
     nxt_unit_sptr_t       target;
     nxt_unit_sptr_t       path;
     nxt_unit_sptr_t       query;

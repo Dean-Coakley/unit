@@ -451,7 +451,8 @@ nxt_ruby_read_request(VALUE hash_env)
 
     nxt_ruby_add_sptr(hash_env, NL("SERVER_NAME"), &r->server_name,
                       r->server_name_length);
-    nxt_ruby_add_str(hash_env, NL("SERVER_PORT"), "80", 2);
+    nxt_ruby_add_sptr(hash_env, NL("SERVER_PORT"), &r->server_port,
+                      r->server_port_length);
 
     rb_hash_aset(hash_env, rb_str_new2("rack.url_scheme"),
                  r->tls ? rb_str_new2("https") : rb_str_new2("http"));

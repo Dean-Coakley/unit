@@ -13,14 +13,16 @@ for nxt_option; do
     esac
 
     case "$nxt_option" in
-        --perl=*)      NXT_PERL="$value"                                ;;
-        --module=*)    NXT_PERL_MODULE="$value"                         ;;
+        --perl=*)         NXT_PERL="$value"                                ;;
+        --module=*)       NXT_PERL_MODULE="$value"                         ;;
+        --server-port=*)  NXT_PERL_SERVER_PORT="$value"                    ;;
 
         --help)
             cat << END
 
     --perl=FILE           set perl executable, default: perl
     --module=NAME         set unit perl module name
+    --server-port=PORT    set unit perl server port
 
 END
             exit 0
@@ -51,6 +53,7 @@ $echo "configuring Perl module ..." >> $NXT_AUTOCONF_ERR
 
 NXT_PERL=${NXT_PERL=perl}
 NXT_PERL_MODULE=${NXT_PERL_MODULE=${NXT_PERL##*/}}
+NXT_PERL_SERVER_PORT=${NXT_PERL_SERVER_PORT=}
 
 nxt_found=no
 

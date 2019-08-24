@@ -13,14 +13,16 @@ for nxt_option; do
     esac
 
     case "$nxt_option" in
-        --ruby=*)    NXT_RUBY="$value"                                    ;;
-        --module=*)  NXT_RUBY_MODULE="$value"                             ;;
+        --ruby=*)         NXT_RUBY="$value"                                    ;;
+        --module=*)       NXT_RUBY_MODULE="$value"                             ;;
+        --server-port=*)  NXT_RUBY_SERVER_PORT="$value"                        ;;
 
         --help)
             cat << END
 
-    --ruby=FILE    set ruby executable, default: ruby
-    --module=NAME  set unit ruby module name
+    --ruby=FILE         set ruby executable, default: ruby
+    --module=NAME       set unit ruby module name
+    --server-port=PORT  set unit ruby server port
 
 END
             exit 0
@@ -51,6 +53,8 @@ $echo "configuring Ruby module ..." >> $NXT_AUTOCONF_ERR
 
 NXT_RUBY=${NXT_RUBY=ruby}
 NXT_RUBY_MODULE=${NXT_RUBY_MODULE=${NXT_RUBY}}
+NXT_RUBY_SERVER_PORT=${NXT_RUBY_SERVER_PORT=}
+
 
 nxt_found=no
 

@@ -15,15 +15,17 @@ for nxt_option; do
 
     case "$nxt_option" in
 
-        --config=*)    NXT_PYTHON_CONFIG="$value"                            ;;
-        --module=*)    NXT_PYTHON_MODULE="$value"                            ;;
-        --lib-path=*)  NXT_PYTHON_LIB_PATH="$value"                          ;;
+        --config=*)       NXT_PYTHON_CONFIG="$value"                            ;;
+        --module=*)       NXT_PYTHON_MODULE="$value"                            ;;
+        --server-port=*)  NXT_PYTHON_SERVER_PORT="$value"                       ;;
+        --lib-path=*)     NXT_PYTHON_LIB_PATH="$value"                          ;;
 
         --help)
             cat << END
 
     --config=FILE         set python-config filename
     --module=NAME         set unit python module name
+    --server-port=PORT    set unit python server port
     --lib-path=DIRECTORY  set directory path to libpython.so library
 
 END
@@ -54,6 +56,7 @@ fi
 NXT_PYTHON_CONFIG=${NXT_PYTHON_CONFIG=python-config}
 NXT_PYTHON=${NXT_PYTHON_CONFIG%-config*}
 NXT_PYTHON_MODULE=${NXT_PYTHON_MODULE=${NXT_PYTHON##*/}}
+NXT_PYTHON_SERVER_PORT=${NXT_PYTHON_SERVER_PORT=}
 NXT_PYTHON_LIB_PATH=${NXT_PYTHON_LIB_PATH=}
 
 
@@ -161,7 +164,7 @@ END
 
 done
 
- 
+
 cat << END >> $NXT_MAKEFILE
 
 .PHONY: ${NXT_PYTHON_MODULE}
