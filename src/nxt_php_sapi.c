@@ -939,7 +939,7 @@ nxt_php_register_variables(zval *track_vars_array TSRMLS_DC)
 
     nxt_php_set_sptr(req, "SERVER_NAME", &r->server_name, r->server_name_length,
                      track_vars_array TSRMLS_CC);
-    nxt_php_set_sptr(req, "SERVER_PORT", &r->server_port, r->server_port_length,
+    nxt_php_set_sptr(req, "SERVER_PORT", &r->server_port, sizeof(r->server_port),
                      track_vars_array TSRMLS_CC);
 
     if (r->tls) {
